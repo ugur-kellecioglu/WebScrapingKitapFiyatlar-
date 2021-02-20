@@ -14,9 +14,18 @@ let response = await fetch(`https://api.personaclick.com/search?shop_id=59510381
 "cookie": "did=xo7HBWTR3R"
 }
 });
-const data = await response.json();
-const products = data.products
-return products;
+let data = await response.json();
+products = []
+data.products.forEach(p => {
+
+    if(p.name.toLowerCase() === kitap.toLowerCase()){
+
+        products.push(p);
+    }
+});
+
+    console.log(products.length);
+    return products;
 }
 
 module.exports = getData;
